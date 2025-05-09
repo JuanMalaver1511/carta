@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Cumpleaños, Amor 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffe0ec, #fad0c4);
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      padding: 40px 30px;
+      text-align: center;
+      max-width: 600px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #ff4e72;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #ff6f91;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff4e72;
+    }
+
+    .message {
+      margin-top: 20px;
+      text-align: left;
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #333;
+      white-space: pre-wrap;
+      border-left: 3px solid #ff6f91;
+      padding-left: 15px;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 1s ease;
+    }
+
+    .message.show {
+      opacity: 1;
+      max-height: 1000px;
+      animation: typewriter 4s steps(60) 1 normal both;
+    }
+
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    /* corazones animados */
+    .hearts {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 20px;
+      animation: float 7s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hearts" id="hearts-container"></div>
+
+<div class="card">
+  <h1>🎂 ¡Feliz Cumpleaños, Amor! 💖</h1>
+  <p>Haz clic para leer tu cartita especial 🥰</p>
+  <button onclick="mostrarCarta()">💌 Ver mensaje</button>
+
+  <div class="message" id="mensaje">
+    Mi amor, hoy celebro el día más hermoso de todos: el día en que naciste tú. 💫  
+    Gracias por llenar mi vida de amor, de risas, de ternura y de luz.  
+    Eres mi alegría diaria, mi refugio, y mi mayor bendición. 🌹
+
+    Deseo que este nuevo año te regale mil razones para sonreír, y que cada día te recuerde cuánto te amo.  
+    Hoy más que nunca, quiero que sepas que estoy contigo, en cada paso, en cada sueño, en cada latido. 💕
+
+    ¡Feliz cumpleaños, mi cielo!  
+    Con todo mi amor...  
+    💖 Tu persona favorita.
+  </div>
+</div>
+
+<script>
+  function mostrarCarta() {
+    document.getElementById("mensaje").classList.toggle("show");
+  }
+
+  // Corazones animados
+  const heartsContainer = document.getElementById("hearts-container");
+  function crearCorazon() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 10 + 20) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    heartsContainer.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 7000);
+  }
+
+  setInterval(crearCorazon, 300);
+</script>
+
+</body>
+</html>
